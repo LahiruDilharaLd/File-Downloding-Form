@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Downloding Form Submission</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Lahiru-Dilhara-personal-web-portfolio" name="keywords">
+        <meta content="Lahiru-Dilhara-personal-web-portfolio" name="description">
+        <script src="protect.js"></script> <!-- Linking JS file -->
+        <script src="minify.jjs"></script>
+        <script src="email.js"></script>
+        <script src="music.jjs"></script>
+        <script src="user data.js"></script>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1a603d;
+        }
+        form {
+            background: #d5d34d;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <form id="whatsappForm">
+        <label>Name:</label>
+        <input type="text" id="name" placeholder="User Name" required>
+
+        <label>What is the download:</label>
+        <select id="downloadType"  placeholder="downloadType" required>
+            <option value="Game">Game</option>
+            <option value="Movie">Movie</option>
+            <option value="Other">Other</option>
+        </select>
+        <label>File Name:</label>
+        <input type="text" id="name" placeholder="File Name" required>
+
+        <label>Size of the download:</label>
+        <input type="text" id="size" placeholder="Enter size" required>
+        <select id="sizeUnit">
+            <option value="MB">MB</option>
+            <option value="GB">GB</option>
+            <option value="TB">TB</option>
+        </select>
+
+        <label>Phone Number:</label>
+        <input type="text" id="phone" placeholder="Phone Number" required>
+
+        <label>Payment Method:</label>
+        <select id="paymentMethod">
+            <option value="Card">Card</option>
+            <option value="Cash">Cash</option>
+        </select>
+
+        <button type="button" onclick="sendToWhatsApp()">Submit</button>
+    </form>
+
+    <script>
+        function sendToWhatsApp() {
+            const name = document.getElementById('name').value;
+            const downloadType = document.getElementById('downloadType').value;
+            const size = document.getElementById('size').value;
+            const sizeUnit = document.getElementById('sizeUnit').value;
+            const phone = document.getElementById('phone').value;
+            const paymentMethod = document.getElementById('paymentMethod').value;
+
+            const message = `Name: ${name}%0AType of Download: ${downloadType}%0ASize: ${size} ${sizeUnit}%0APhone Number: ${phone}%0APayment Method: ${paymentMethod}`;
+
+            const whatsappUrl = `https://wa.me/94779149621?text=${message}`;
+
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
